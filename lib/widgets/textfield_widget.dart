@@ -28,6 +28,7 @@ class TextFieldWidget extends StatelessWidget {
           autofocus: autoFocus,
           textInputAction: inputAction,
           keyboardType: inputType,
+          textAlign: TextAlign.center,
           decoration: InputDecoration(
             hintText: hint,
             hintStyle: Theme.of(context)

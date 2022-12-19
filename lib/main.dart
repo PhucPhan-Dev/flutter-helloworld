@@ -8,14 +8,16 @@ class MainLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage(Assets.backgroundApp), fit: BoxFit.fill),
+    return Scaffold(
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(Assets.backgroundApp), fit: BoxFit.fill),
+        ),
+        child: SafeArea(child: children),
       ),
-      child: SafeArea(child: children),
     );
   }
 
@@ -34,9 +36,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'NotoSans',
       ),
-      home: const Scaffold(
-        body: MainLayout(children: LoginScreen()),
-      ),
+      home: const MainLayout(children: LoginScreen()),
     );
   }
 }
