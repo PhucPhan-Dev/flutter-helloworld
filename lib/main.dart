@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/ui/login.dart';
+import 'package:hello_world/ui/registration.dart';
 
 import 'constants/assets.dart';
 
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'NotoSans',
       ),
-      home: const MainLayout(children: LoginScreen()),
+      home: const MainLayout(children: RegistrationScreen()),
     );
   }
 }

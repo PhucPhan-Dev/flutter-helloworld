@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:hello_world/constants/colors.dart';
-import 'package:hello_world/constants/text_styles.dart';
-import 'package:hello_world/widgets/button_widget.dart';
-import 'package:hello_world/widgets/textfield_widget.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+import '../constants/colors.dart';
+import '../constants/text_styles.dart';
+import '../widgets/button_widget.dart';
+import '../widgets/textfield_widget.dart';
+
+class RegistrationScreen extends StatefulWidget {
+  const RegistrationScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegistrationScreen> createState() => _RegistrationScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return _buildBody();
@@ -27,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
               // ignore: prefer_const_literals_to_create_immutables
               children: [
                 const Text(
-                  'Welcome back to',
+                  'Welcome to',
                   style: AppTextStyles.header,
                 ),
                 const Text(
@@ -37,20 +38,38 @@ class _LoginScreenState extends State<LoginScreen> {
                 const Padding(
                   padding: EdgeInsets.only(top: 16.0),
                   child: Text(
-                    'Log in below',
+                    'Create a password for your store account to get started.',
                     style: AppTextStyles.description,
+                    textAlign: TextAlign.center,
                   ),
                 ),
                 const TextFieldWidget(
                     hint: 'Email', padding: EdgeInsets.only(top: 52.0)),
                 const TextFieldWidget(
-                  hint: "Password",
-                  padding: EdgeInsets.only(top: 32.0),
+                  hint: "OTP",
+                  padding: EdgeInsets.only(top: 35.0),
                 ),
+                const Text(
+                  'This was the XX digit code one time password sent to your email by utu.',
+                  style: AppTextStyles.description,
+                  textAlign: TextAlign.center,
+                ),
+                const TextFieldWidget(
+                    hint: 'New Password', padding: EdgeInsets.only(top: 35.0)),
+                const TextFieldWidget(
+                    hint: 'Confirm New Password', padding: EdgeInsets.only(top: 35.0)),
                 const Padding(
                   padding: EdgeInsets.only(top: 32.0),
+                  child: Text(
+                    'Already registered?',
+                    style: AppTextStyles.description,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(top: 8.0),
                   child: ButtonWidget(
-                    textButton: "Forgot Password",
+                    textButton: "Sign In",
                     typeBtn: Fruit.text,
                   ),
                 ),
@@ -75,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     offset: const Offset(0, 6), // changes position of shadow
                   ),
                 ]),
-            child: const ButtonWidget(textButton: "Sign In"),
+            child: const ButtonWidget(textButton: "Next", disabled: true,),
           ),
         )
       ],
