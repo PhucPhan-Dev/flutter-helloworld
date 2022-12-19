@@ -6,7 +6,7 @@ class TextFieldWidget extends StatelessWidget {
   final String? label;
   final String? errorText;
   final TextInputType? inputType;
-  final TextEditingController textController;
+  final TextEditingController? textController;
   final EdgeInsets padding;
   final Color hintColor;
   final FocusNode? focusNode;
@@ -51,7 +51,7 @@ class TextFieldWidget extends StatelessWidget {
     Key? key,
     this.errorText,
     this.label,
-    required this.textController,
+    this.textController,
     this.inputType,
     this.hint,
     this.padding = const EdgeInsets.all(0),

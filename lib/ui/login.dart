@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/constants/text_styles.dart';
 import 'package:hello_world/widgets/textfield_widget.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -9,8 +10,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController _userEmailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return _buildBody();
@@ -18,21 +17,41 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _buildBody() {
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(32.0),
       child: Column(
+        // ignore: prefer_const_literals_to_create_immutables
         children: [
-          const Text('Welcome back to'),
-          const Text('utu Partner!'),
-          const Text('Log in below'),
-          TextFieldWidget(
-            textController: _userEmailController,
-            hint: 'Email',
+          const Text(
+            'Welcome back to',
+            style: TextStyles.header,
           ),
-          TextFieldWidget(
-            textController: _passwordController,
-            hint: "Password",
+          const Text(
+            'utu Partner!',
+            style: TextStyles.headerBold,
           ),
-          const Text("Forgot Password"),
+          const Padding(
+            padding: EdgeInsets.only(top: 16.0),
+            child: Text(
+              'Log in below',
+              style: TextStyles.description,
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(top: 52.0),
+            child: TextFieldWidget(
+              hint: 'Email',
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(top: 32.0),
+            child: TextFieldWidget(
+              hint: "Password",
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(top: 32.0),
+            child: Text("Forgot Password", style: TextStyles.descriptionBold,),
+          ),
         ],
       ),
     );

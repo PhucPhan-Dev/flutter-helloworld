@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hello_world/ui/login.dart';
 
 import 'constants/assets.dart';
 
 class MainLayout extends StatelessWidget {
-  final Widget? children;
+  final Widget children;
 
   @override
   Widget build(BuildContext context) {
@@ -16,21 +15,32 @@ class MainLayout extends StatelessWidget {
         image: DecorationImage(
             image: AssetImage(Assets.backgroundApp), fit: BoxFit.fill),
       ),
-      child: children,
+      child: SafeArea(child: children),
     );
   }
 
-  const MainLayout({Key? key, this.children}) : super(key: key);
+  const MainLayout({Key? key, required this.children}) : super(key: key);
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    const appName = 'Utu';
+
+    return MaterialApp(
+      title: appName,
+      theme: ThemeData(
+        fontFamily: 'NotoSans',
+      ),
+      home: const Scaffold(
+        body: MainLayout(children: LoginScreen()),
+      ),
+    );
+  }
 }
 
 void main() {
-  runApp(const MaterialApp(
-    title: 'Shopping App',
-    theme: ThemeData(
-      textTheme: GoogleFonts.notoSansTextTheme(),
-    ),
-    home: Scaffold(
-      body: MainLayout(children: LoginScreen()),
-    ),
-  ));
+  runApp(const MyApp());
 }
