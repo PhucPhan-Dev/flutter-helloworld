@@ -1,6 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hello_world/constants/colors.dart';
 import 'package:hello_world/constants/text_styles.dart';
+import 'package:hello_world/models/userLogin.dart';
+import 'package:hello_world/ui/registration.dart';
 import 'package:hello_world/widgets/button_widget.dart';
 import 'package:hello_world/widgets/textfield_widget.dart';
 
@@ -12,12 +17,26 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return _buildBody();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  bool _disabled = true;
+
+  void toggleButton() {
+    if (emailController.text != '' && passwordController.text != '') {
+      setState(() {
+        _disabled = false;
+      });
+    } else {
+      setState(() {
+        _disabled = true;
+      });
+    }
   }
 
-  Widget _buildBody() {
+  @override
+  Widget build(
+    BuildContext context,
+  ) {
     return Column(
       children: [
         Expanded(
@@ -41,11 +60,17 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: AppTextStyles.description,
                   ),
                 ),
-                const TextFieldWidget(
-                    hint: 'Email', padding: EdgeInsets.only(top: 52.0)),
-                const TextFieldWidget(
+                TextFieldWidget(
+                  textController: emailController,
+                  hint: 'Email',
+                  padding: const EdgeInsets.only(top: 52.0),
+                  onChanged: (value) => toggleButton(),
+                ),
+                TextFieldWidget(
+                  textController: passwordController,
                   hint: "Password",
-                  padding: EdgeInsets.only(top: 32.0),
+                  padding: const EdgeInsets.only(top: 32.0),
+                  onChanged: (value) => toggleButton(),
                 ),
                 const Padding(
                   padding: EdgeInsets.only(top: 32.0),
@@ -75,7 +100,17 @@ class _LoginScreenState extends State<LoginScreen> {
                     offset: const Offset(0, 6), // changes position of shadow
                   ),
                 ]),
-            child: const ButtonWidget(textButton: "Sign In"),
+            child: ButtonWidget(
+              textButton: "Sign In",
+              disabled: _disabled,
+              onPressed: () {
+                Get.put(UserLogin()).updateUserLogin(
+                  email: emailController.text,
+                  password: passwordController.text,
+                );
+                Get.to(const RegistrationScreen());
+              },
+            ),
           ),
         )
       ],

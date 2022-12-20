@@ -20,7 +20,7 @@ class ButtonWidget extends StatelessWidget {
     switch (typeBtn) {
       case Fruit.outline:
         return OutlinedButton(
-            onPressed: onPressed,
+            onPressed: disabled ? null : onPressed,
             style: OutlinedButton.styleFrom(
                 side: const BorderSide(color: AppColors.persianGreen),
                 minimumSize: const Size.fromHeight(52),
@@ -34,7 +34,7 @@ class ButtonWidget extends StatelessWidget {
                     color: AppColors.persianGreen)));
       case Fruit.text:
         return TextButton(
-            onPressed: onPressed,
+            onPressed: disabled ? null : onPressed,
             style: const ButtonStyle(
               minimumSize: MaterialStatePropertyAll<Size>(Size.fromHeight(52)),
             ),
@@ -45,7 +45,7 @@ class ButtonWidget extends StatelessWidget {
                     color: AppColors.persianGreen)));
       case Fruit.icon:
         return ElevatedButton(
-            onPressed: onPressed,
+            onPressed: disabled ? null : onPressed,
             style: OutlinedButton.styleFrom(
               backgroundColor: AppColors.persianGreen,
               shape: const CircleBorder(),
@@ -59,23 +59,20 @@ class ButtonWidget extends StatelessWidget {
             ));
       default:
         return ElevatedButton(
-            onPressed: onPressed,
+            onPressed: disabled ? null : onPressed,
             style: OutlinedButton.styleFrom(
                 minimumSize: const Size.fromHeight(52),
                 backgroundColor:
                     disabled ? AppColors.lightGray : AppColors.persianGreen,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16.0))),
-            child: Text(textButton,
-                style: disabled
-                    ? const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.spanishGray)
-                    : const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white)));
+            child: Text(
+              textButton,
+              style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                  color: disabled ? AppColors.spanishGray : Colors.white),
+            ));
     }
   }
 
