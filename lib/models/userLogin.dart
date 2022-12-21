@@ -11,5 +11,4 @@ class UserLogin extends GetxController{
     this.password = password;
     update();
   }
-
 }

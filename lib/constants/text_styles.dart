@@ -1,5 +1,4 @@
-import 'package:flutter/cupertino.dart';
-
+import 'package:flutter/material.dart';
 class AppTextStyles {
   static const TextStyle header = TextStyle(fontSize: 24, fontWeight: FontWeight.w400);
   static const TextStyle headerBold = TextStyle(fontSize: 24, fontWeight: FontWeight.w700);
